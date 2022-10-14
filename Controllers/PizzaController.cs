@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
 namespace la_mia_pizzeria_crud_webapi.Controllers
-{
+{    
     public class PizzaController : Controller
     {
         PizzeriaContext context = new PizzeriaContext();
@@ -44,7 +44,7 @@ namespace la_mia_pizzeria_crud_webapi.Controllers
             return View(PizzaDB);
         }
 
-        // POST: PizzaController/Create
+        // POST: PizzaController/Create        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PizzaLink formData)
