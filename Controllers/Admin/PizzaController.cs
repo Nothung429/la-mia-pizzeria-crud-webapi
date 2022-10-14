@@ -6,11 +6,20 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
-namespace la_mia_pizzeria_crud_webapi.Controllers
-{    
+namespace la_mia_pizzeria_crud_webapi.Controllers.Admin
+{
+    [Authorize]
     public class PizzaController : Controller
     {
+        private readonly ILogger<PizzaController> _logger;
+
+        public PizzaController(ILogger<PizzaController> logger)
+        {
+            _logger = logger;
+        }
+
         PizzeriaContext context = new PizzeriaContext();
 
         // GET: PizzaController
@@ -44,7 +53,7 @@ namespace la_mia_pizzeria_crud_webapi.Controllers
             return View(PizzaDB);
         }
 
-        // POST: PizzaController/Create        
+        // POST: PizzaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PizzaLink formData)
@@ -114,8 +123,8 @@ namespace la_mia_pizzeria_crud_webapi.Controllers
         public ActionResult Delete(int id)
         {
             Pizza pizza = context.Pizza.Where(pizza => pizza.Id == id).First();
-            
-            if(pizza == null)
+
+            if (pizza == null)
             {
                 return View("Error");
             }

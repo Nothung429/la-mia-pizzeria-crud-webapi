@@ -3,18 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace la_mia_pizzeria_crud_webapi.Controllers
-{
-    [Authorize]
+namespace la_mia_pizzeria_crud_webapi.Controllers.Admin
+{    
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
