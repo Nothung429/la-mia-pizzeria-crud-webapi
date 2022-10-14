@@ -1,0 +1,43 @@
+﻿@{
+    List<Pizza> ListPizza = new List<Pizza>();
+
+    ListPizza.Add(new Pizza("Pizza Margherita", "bona come er pane", "cane.png", 3.99));
+    ListPizza.Add(new Pizza("Pizza Capricciosa", "idem co patate", "cane.png", 7.99));
+    ListPizza.Add(new Pizza("Pizza Diavola", "er duca", "cane.png", 12.99));
+    ListPizza.Add(new Pizza("Pizza Quattro Formaggi", "fiocina", "cane.png", 9.99));
+    ListPizza.Add(new Pizza("Pizza Coi Funghi", "er monnezza", "cane.png", 11.99));
+    ListPizza.Add(new Pizza("Pizza Salsiccia e Salame", "tonino u lurdu", "cane.png", 5.99));
+}
+
+<div class="container">
+    <h1 class="text-center display-4">Welcome to Pizzeria Totò Sapore</h1>
+    <table class="table table-dark table-striped table-hover mt-4">
+        <thead>
+            <tr>
+                <th scope="col" width="25%">Nome</th>
+                <th scope="col" width="25%">Descrizione</th>
+                <th scope="col" width="25%">Immagine</th>
+                <th scope="col" width="25%">Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pizza in ListPizza)
+            {
+                <tr>
+                    <td>
+                        <h3>@pizza.Name</h3>
+                    </td>
+                    <td>
+                        <p>@pizza.Description</p>
+                    </td>
+                    <td>
+                        <img width="100" src="~/img/@pizza.Image">
+                    </td>
+                    <td>
+                        <h4>@pizza.Price€</h4>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
