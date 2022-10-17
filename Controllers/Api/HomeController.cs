@@ -31,5 +31,13 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.Api
 
             return Ok(PizzaDB.ToList<Pizza>());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            Pizza pizza = context.Pizza.Where(p => p.Id == id).First();
+
+            return Ok(pizza);
+        }
     }
 }

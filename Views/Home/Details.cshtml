@@ -1,0 +1,55 @@
+﻿@{
+
+}
+
+<div class="container">
+    <div class="mb-5">
+        <h1 class="text-center display-4 mb-3">Welcome to Pizzeria Totò Sapore</h1>
+    </div>
+    <table class="table table-dark table-striped table-hover mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Immagine</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Prezzo</th>
+                <th scope="col">Descrizione</th>
+            </tr>
+        </thead>
+        <tbody id="axios-pizza">
+
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+
+    debugger;
+    let id = window.location.pathname.split('/')[3];
+
+    axios.get('/api/home/get/' + id).then(response => {
+
+        console.log("Dati trovati", response);
+        let pino = response.data;
+        document.querySelector('#axios-pizza').innerHTML +=
+            `
+                <tr>
+                    <td>
+                        <img width="100" height="100" src="${pizza.image}" class="rounded-circle">
+                    </td>
+                    <td>
+                        <h3>${pizza.name}</h3>
+                    </td>
+                    <td>
+                        <h4>${pizza.price}€</h4>
+                    </td>
+                    <td>
+                        <p>${pizza.description}</p>
+                    </td>
+                </tr>
+            `;
+    }).catch(err => {
+        console.log("Dati non trovati", error);
+    })
+
+</script>

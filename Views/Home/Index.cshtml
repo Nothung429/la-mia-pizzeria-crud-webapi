@@ -50,18 +50,20 @@
             pino.forEach(pizza => {document.querySelector("#axios-pizza").innerHTML +=
                 `
                     <tr>
-                        <td>
-                            <img width="100" height="100" src="${pizza.image}" class="rounded-circle">
-                        </td>
-                        <td>
-                            <h3>${pizza.name}</h3>
-                        </td>
-                        <td>
-                            <h4>${pizza.price}€</h4>
-                        </td>
-                        <td>
-                            <p>${pizza.description}</p>
-                        </td>
+                        <a href="/Home/Details/${pizza.id}"
+                            <td>
+                                <img width="100" height="100" src="${pizza.image}" class="rounded-circle">
+                            </td>
+                            <td>
+                                <h3>${pizza.name}</h3>
+                            </td>
+                            <td>
+                                <h4>${pizza.price}€</h4>
+                            </td>
+                            <td>
+                                <p>${pizza.description}</p>
+                            </td>
+                        >
                     </tr>
                 `
             });
