@@ -8,7 +8,7 @@
             <h1>Scrivi Messaggio</h1>
         </div>
         <div class="card-body">
-            <form onsubmit="Send(message)">
+            <form onsubmit="Send(event)">
                 <div class="mb-3">
                     <label for="contact-email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="contact-email">
@@ -41,8 +41,8 @@
 
 <script type="text/javascript">
 
-    function Send(mess) {
-        mess.preventDefault();
+    function Send(e) {
+        e.preventDefault();
 
         axios.post("/api/message/sendmessage", {
             email: document.querySelector('#contact-email').value,
