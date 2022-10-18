@@ -46,3 +46,10 @@
 //La nostra pizzeria è quasi conclusa...ma...come fanno i nostri clienti a trovare una pizza se ne abbiamo tante nel nostro menu? Dobbiamo dargli la possibilità di ricercarle con un filtro.
 //Modifichiamo quindi la pagina index, aggiungendo un text input di ricerca. Ogni volta che viene scritto qualcosa, il sistema deve interrogare le nostre WebApi chiedendo indietro le pizze che contengono nel titolo quello che ha chiesto l’utente, e mostriamo in pagina i risultati filtrati.
 //Al click della card di una pizza, dobbiamo essere portati a una pagina di dettaglio. I dati da mostrare di questa pagina devono essere richiesti alle nostra webapi tramite l’id della pizza e mostrati in pagina usando il javascript.
+
+
+//PARTE 7
+
+//Il rapporto con i clienti è importante…quindi perchè non permettergli di inviarci dei messaggi?
+//Creiamo il nostro model Message e relativa migration per gestire i dati. Implementiamo un nuovo controller Api/MessagesController con il metodo Post.
+//Andiamo nella homepage e aggiungiamo l’html per il form dei messaggi e il codice javascript per eseguire il post tramite axios.
