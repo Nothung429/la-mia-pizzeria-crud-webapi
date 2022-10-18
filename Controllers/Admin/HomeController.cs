@@ -17,6 +17,11 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.Admin
             return View();
         }
 
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -7,6 +7,7 @@ public class PizzeriaContext : IdentityDbContext<IdentityUser>
     public DbSet<Pizza>? Pizza { get; set; }
     public DbSet<Category>? Category { get; set; }
     public DbSet<Ingredient>? Ingredient { get; set; }
+    public DbSet<Message>? Message { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
