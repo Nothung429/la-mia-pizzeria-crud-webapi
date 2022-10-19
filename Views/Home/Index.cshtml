@@ -25,54 +25,67 @@
     </table>
 </div>
 
-<script type="text/javascript">
 
-    document.querySelector("#pizza-search").addEventListener('keyup',search);
+@section Scripts {
+    <script type="text/javascript">
 
-    function search(){
-        let name = this.value;
+        document.querySelector("#pizza-search").addEventListener('keyup',search);
 
-        result(name);
-    }
+        function search(){
+            let name = this.value;
 
-    function result(name){
-        axios.get('/api/home/getpizza', {
-            params:{
-                name: name
-            }
-        }).then(function (response) {
+            result(name);
+        }
 
-            console.log("Dati trovati", response);
+        function result(name){
+            axios.get('/api/home/getpizza', {
+                params:{
+                    name: name
+                }
+            }).then(function (response) {
 
-            let pino = response.data;
+                console.log("Dati trovati", response);
 
-            document.querySelector("#axios-pizza").innerHTML = ""
+                let pino = response.data;
 
-            pino.forEach(pizza => {document.querySelector("#axios-pizza").innerHTML +=
-                `
-                    <tr>                        
-                        <td>
-                            <img width="100" height="100" src="${pizza.image}" class="rounded-circle">
-                        </td>
-                        <td>
-                            <h3>${pizza.name}</h3>
-                        </td>
-                        <td>
-                            <h4>${pizza.price}€</h4>
-                        </td>
-                        <td>
-                            <p>${pizza.description}</p>
-                        </td>
-                        <td>
-                            <a href="/Home/Details/${pizza.id}" class="btn btn-outline-info">Visualizza</a>
-                        </td>
-                    </tr>
-                `
+                document.querySelector("#axios-pizza").innerHTML = ""
+
+                pino.forEach(pizza => {document.querySelector("#axios-pizza").innerHTML +=
+                    `
+                        <tr>                        
+                            <td>
+                                <img width="100" height="100" src="${pizza.image}" class="rounded-circle">
+                            </td>
+                            <td>
+                                <h3>${pizza.name}</h3>
+                            </td>
+                            <td>
+                                <h4>${pizza.price}€</h4>
+                            </td>
+                            <td>
+                                <p>${pizza.description}</p>
+                            </td>
+                            <td>
+                                <a href="/Home/Details/${pizza.id}" class="btn btn-outline-info">Visualizza</a>
+                                <button onclick="deletePizza(${pizza.id})" class="btn btn-outline-danger">Cancella</button>
+                            </td>
+                        </tr>
+                    `
+                });
+            })
+            .catch(error => {
+                console.log("Dati non trovati", error);
             });
-        })
-        .catch(error => {
-            console.log("Dati non trovati", error);
-        });
-    }
+        }
 
-</script>
+        function deletePizza(id) {
+            axios.delete('/api/home/delete/' + id).then(res => {
+                console.log(res);
+                alert("somebody once told me the world is gonna roll me");
+            }).catch(err => {
+                console.log(err);
+                alert("Gesù mi ama! LO SO! Perché lo dice la bibbia!");
+            })
+        }
+    </script>
+}

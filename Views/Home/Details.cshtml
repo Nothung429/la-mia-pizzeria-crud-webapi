@@ -1,7 +1,8 @@
-﻿@{
-
+﻿@using la_mia_pizzeria_crud_webapi.Models
+@{
+    
 }
-@model int
+@model List<Pizza>;
 
 <div class="container">
     <div class="mb-5">
@@ -46,7 +47,7 @@
                     </td>
                     <td>
                         <p>${pizza.description}</p>
-                    </td>
+                    </td>                   
                 </tr>
             `;
     }).catch(err => {

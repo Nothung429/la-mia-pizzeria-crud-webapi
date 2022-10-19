@@ -1,0 +1,90 @@
+﻿@{
+    
+}
+
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            <h1>Scrivi Messaggio</h1>
+        </div>
+        <div class="card-body">
+            <form onsubmit="Send(event)">
+                <div class="mb-3">
+                    <label for="pizza-name" class="form-label">Nome Pizza *</label>
+                    <input type="text" class="form-control" id="pizza-name">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="pizza-price">Prezzo Pizza *</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">€</span>
+                        <input type="text" class="form-control" id="pizza-price">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="pizza-description">Descrizione Pizza *</label>
+                    <textarea class="form-control" rows="10" id="pizza-description"></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="pizza-image" class="form-label">Immagine Pizza</label>
+                    <input type="text" class="form-control" id="pizza-image">
+                </div>
+
+@*                <div class="form-group mb-3">
+                    <label for="Pizza.CategoryId" class="form-label">Categoria Pizza</label>
+                    <select rows="10" class="form-control">
+                        @foreach (Category category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Pizza.Ingredients" class="form-label">Ingredienti Pizza</label>
+                    <select multiple="multiple" size="10" class="form-control mb-2 mr-sm-2 ml-sm-3 leftList">
+                        @foreach (Ingredient ingredient in Model.Ingredients)
+                        {
+                            <option value="@ingredient.Id">@ingredient.Name</option>
+                        }
+                    </select>
+                </div>*@
+
+                <div>
+                    <p>* Questi campi sono obbligatori</p>
+                </div>
+
+                <button type="submit" class="btn btn-outline-success">Invia</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function Send(e) {
+        e.preventDefault();
+
+        axios.post("/api/home/update", {
+            email: document.querySelector('#pizza-name').value,
+            name: document.querySelector('#pizza-price').value,
+            title: document.querySelector('#pizza-description').value,
+            text: document.querySelector('#pizza-image').value,
+        })
+        .then(res => {
+            document.querySelector('#pizza-name').value = '';
+            document.querySelector('#pizza-price').value = '';
+            document.querySelector('#pizza-description').value = '';
+            document.querySelector('#pizza-image').value = '';
+            alert('pizza aggiornata correttamente');
+        })
+        .catch(error => {
+            console.log(error);
+            alert('Hai sbagliato trimone');
+        })
+    }
+
+</script>
