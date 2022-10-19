@@ -53,3 +53,15 @@
 //Il rapporto con i clienti è importante…quindi perchè non permettergli di inviarci dei messaggi?
 //Creiamo il nostro model Message e relativa migration per gestire i dati. Implementiamo un nuovo controller Api/MessagesController con il metodo Post.
 //Andiamo nella homepage e aggiungiamo l’html per il form dei messaggi e il codice javascript per eseguire il post tramite axios.
+
+
+//PARTE 8
+
+//Ciao ragazzi, sulla base di quello che abbiamo visto oggi, procediamo a modificare il programma della pizzeria aggiungendo queste specifiche:
+//    Inserire Put e Delete delle nostre pizze nelle action del nostro ApiController e quindi sul frontend per gestire la cancellazione e l’aggiornamento.
+//    Inseriamo i repository di tutte le entità per spostare la logica di accesso al db e alleggerire i nostri controller.
+//    Sfruttiamo l’injection per caricare il nostro DbContext direttamente all’avvio del sistema.
+
+//Bonus: Se vi rimane tempo e volete sperimentare quanto visto in livecoding sull’injection, potete provare a costruire (di almeno una entita) un InMemoryRepository che implementi la persistenza dei dati sui Generics.
+
+//builder.Services.AddScoped<BlogContext>();
