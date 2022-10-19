@@ -42,6 +42,18 @@ namespace la_mia_pizzeria_crud_webapi.Controllers.Api
             return Ok(pizza);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(int id)
+        {
+            Pizza pizza = context.Pizza.Where(p => p.Id == id).First();
+
+            context.Update(pizza);
+
+            context.SaveChanges();
+
+            return Ok(new { Message = "somebody once told me the world is gonna roll me" });
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
